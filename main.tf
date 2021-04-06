@@ -1,7 +1,9 @@
 variable "username" {
 }
 
-provider "random" { # an empty for destroying old resources
+variable "where" {
+  type = string
+  default = "bunkum"
 }
 
 resource "null_resource" "random" {
@@ -21,12 +23,28 @@ resource "null_resource" "random" {
   # }
 }
 
+data "terraform_remote_state" "other_username" {
+  backend = "remote"
+
+  config = {
+    hostname = "tfe-zone-b0c8608c.ngrok.io"
+    organization = "shadycorp"
+    workspaces = {
+      name = var.where
+    }
+  }
+}
+
 output "random" {
   value = "Changed to ${null_resource.random.id}"
 }
 
 output "username" {
   value = "Username is ${var.username}. Extra text???"
+}
+
+output "other_username" {
+  value = data.terraform_remote_state.other_username.outputs.username
 }
 
 # data "terraform_remote_state" "dev" {
