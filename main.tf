@@ -25,6 +25,7 @@ resource "null_resource" "random" {
 
 data "terraform_remote_state" "other_username" {
   backend = "remote"
+  count = var.where == "nowhere" ? 0 : 1
 
   config = {
     hostname = "tfe-zone-b0c8608c.ngrok.io"
@@ -44,7 +45,7 @@ output "username" {
 }
 
 output "other_username" {
-  value = data.terraform_remote_state.other_username.outputs.username
+  value = length(data.terraform_remote_state.other_username) > 0 ? data.terraform_remote_state.other_username[0].outputs.username : "[nothing]"
 }
 
 # data "terraform_remote_state" "dev" {
