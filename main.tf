@@ -6,6 +6,16 @@ variable "where" {
   default = "bunkum"
 }
 
+variable "org" {
+  type = string
+  default = "shadycorp"
+}
+
+variable "host" {
+  type = string
+  default = "tfe-zone-b0c8608c.ngrok.io"
+}
+
 resource "null_resource" "random" {
   triggers = {
     username = var.username
@@ -28,8 +38,8 @@ data "terraform_remote_state" "other_username" {
   count = var.where == "nowhere" ? 0 : 1
 
   config = {
-    hostname = "tfe-zone-b0c8608c.ngrok.io"
-    organization = "shadycorp"
+    hostname = var.host
+    organization = var.org
     workspaces = {
       name = var.where
     }
