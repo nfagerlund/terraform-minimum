@@ -51,9 +51,8 @@ output "random" {
 }
 
 output "username" {
-  value = "Username is ${var.username}. Extra text???"
+  value = "Username is ${var.username}. Extra text!!"
 }
-
 output "other_username" {
   value = length(data.terraform_remote_state.other_username) > 0 ? data.terraform_remote_state.other_username[0].outputs.username : "[nothing]"
 }
