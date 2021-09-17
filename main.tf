@@ -46,7 +46,6 @@ output "username" {
 locals {
   other_username = length(data.terraform_remote_state.other_username) > 0 ? data.terraform_remote_state.other_username[0].outputs.username : "[nothing]"
 }
-
 output "other_username" {
   value = local.other_username
 }
