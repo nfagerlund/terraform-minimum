@@ -20,17 +20,6 @@ resource "null_resource" "random" {
   triggers = {
     username = var.username
   }
-
-  #   provisioner "local-exec" {
-  #     command = "sleep 12"
-  #   }
-  # only changes when configuration edited, or when username changes.
-  # provisioner "local-exec" {
-  #   command = "curl https://beyondgrep.com/ack-v3.1.1 > ./ack && chmod 0755 ./ack"
-  # }
-  # provisioner "local-exec" {
-  #   command = "./ack random"
-  # }
 }
 
 data "terraform_remote_state" "other_username" {
@@ -46,12 +35,12 @@ data "terraform_remote_state" "other_username" {
   }
 }
 
-output "random" {
+output "random_id" {
   value = "Changed to ${null_resource.random.id}"
 }
 
 output "username" {
-  value = "Username is ${var.username}. Extra text???"
+  value = "Username is ${var.username}. Extra text!!"
 }
 
 output "other_username" {
@@ -70,10 +59,19 @@ output "other_username" {
 #   }
 # }
 
-# output "username-dev" {
-#   value = data.terraform_remote_state.dev.outputs.username
-# }
+output "rollup" {
+  value = {
+    random_id = null_resource.random.id
+    username = var.username
+  }
+}
 
-# output "all-dev" {
-#   value = data.terraform_remote_state.dev.outputs
-# }
+output "static" {
+  value = ["one", "two"]
+  sensitive = true
+}
+
+output "static_also" {
+  value = "hey"
+  sensitive = true
+}
