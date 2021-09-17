@@ -43,8 +43,12 @@ output "username" {
   value = "Username is ${var.username}. Extra text!!"
 }
 
+locals {
+  other_username = length(data.terraform_remote_state.other_username) > 0 ? data.terraform_remote_state.other_username[0].outputs.username : "[nothing]"
+}
+
 output "other_username" {
-  value = length(data.terraform_remote_state.other_username) > 0 ? data.terraform_remote_state.other_username[0].outputs.username : "[nothing]"
+  value = local.other_username
 }
 
 # data "terraform_remote_state" "dev" {
@@ -63,6 +67,7 @@ output "rollup" {
   value = {
     random_id = null_resource.random.id
     username = var.username
+    other_username = local.other_username
   }
 }
 
