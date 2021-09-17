@@ -24,4 +24,10 @@ output "rollup" {
 
 output "static" {
   value = ["one", "two"]
+  sensitive = true
+}
+
+output "static_also" {
+  value = "hey"
+  sensitive = true
 }
