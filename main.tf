@@ -1,4 +1,5 @@
 variable "username" {
+  default = "default from original config"
 }
 
 resource "null_resource" "random" {
