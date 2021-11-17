@@ -1,41 +1,37 @@
 terraform {
-  backend "remote" {
-    hostname     = "tfcdev-21675e9a.ngrok.io"
-    organization = "hashicorp"
+  cloud {
+    hostname = "tfcdev-21675e9a.ngrok.io"
+    # hostname     = "app.staging.terraform.io"
+    organization = "barretto"
     workspaces {
-      name = "wk1"
+      # prefix = "app-"
+      name = "service"
+      # tags = ["app"]
     }
   }
 }
 
 # terraform {
-#   backend "remote" {
-#     hostname     = "app.terraform.io"
-#     organization = "nicktech"
+#   backend "local" {
+#     # path = "./tf.state"
+#   }
+# }
+
+# hostname     = "app.staging.terraform.io"
+# terraform {
+#   cloud {
+#     organization = "barretto"
 #     workspaces {
-#       prefix = "minimum-"
+#       name = "wk1"
 #     }
 #   }
 # }
 
 # terraform {
-#   backend "remote" {
-#     hostname     = "app.terraform.io"
-#     organization = "nicktech"
+#   backend "pg" {
+#     conn_str = "postgres://barrettclark@localhost/barrettclark?sslmode=disable"
 #     workspaces {
-#       name = "minimum-dev"
-#     }
-#   }
-# }
-
-
-
-# terraform {
-#   backend "remote" {
-#     hostname     = "tfe-zone-b0c8608c.ngrok.io"
-#     organization = "shadycorp"
-#     workspaces {
-#       name = "fly-by-night-dev"
+#       name = "wk3"
 #     }
 #   }
 # }
