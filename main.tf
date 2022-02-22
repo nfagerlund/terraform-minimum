@@ -2,6 +2,10 @@ variable "username" {
   default = "default from original config"
 }
 
+variable "missing" {
+  type = string
+}
+
 resource "null_resource" "random" {
   triggers = {
     username = var.username
@@ -31,4 +35,8 @@ output "static" {
 output "static_also" {
   value = "hey"
   sensitive = true
+}
+
+output "failing" {
+  value = "wait wasn't that ${var.missing}?"
 }
