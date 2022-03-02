@@ -32,3 +32,7 @@ output "static_also" {
   value = "hey"
   sensitive = true
 }
+
+output "is_null" {
+  value = null
+}
