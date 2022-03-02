@@ -34,5 +34,5 @@ output "static_also" {
 }
 
 output "is_null" {
-  value = null
+  value = "not_null"
 }
