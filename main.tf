@@ -1,4 +1,5 @@
 variable "username" {
+  default = "default from original config"
 }
 
 variable "where" {
@@ -36,7 +37,7 @@ data "terraform_remote_state" "other_username" {
 }
 
 output "random_id" {
-  value = "Changed to ${null_resource.random.id}"
+  value = "Changed to ${null_resource.random.id}, extra text"
 }
 
 output "username" {
@@ -78,4 +79,8 @@ output "static" {
 output "static_also" {
   value = "hey"
   sensitive = true
+}
+
+output "is_null" {
+  value = null
 }
