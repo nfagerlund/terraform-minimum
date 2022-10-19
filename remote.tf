@@ -1,12 +1,18 @@
 terraform {
-  cloud {
-    hostname = "tfcdev-21675e9a.ngrok.io"
-    # hostname     = "app.staging.terraform.io"
+  required_version = "0.11.15"
+
+  backend "remote" {
+    # hostname = "tfcdev-21675e9a.ngrok.io"
+    hostname     = "app.staging.terraform.io"
     organization = "barretto"
+
+    # organization = "hashicorp"
+
     workspaces {
       # prefix = "app-"
-      name = "service"
-      # tags = ["app"]
+      name = "upgrayed"
+
+      # tags = ["abc-def"]
     }
   }
 }
@@ -16,6 +22,7 @@ terraform {
 #     # path = "./tf.state"
 #   }
 # }
+
 
 # hostname     = "app.staging.terraform.io"
 # terraform {
@@ -27,6 +34,7 @@ terraform {
 #   }
 # }
 
+
 # terraform {
 #   backend "pg" {
 #     conn_str = "postgres://barrettclark@localhost/barrettclark?sslmode=disable"
@@ -35,3 +43,4 @@ terraform {
 #     }
 #   }
 # }
+
