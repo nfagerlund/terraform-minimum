@@ -1,2 +1,3 @@
 author       = "barrett"
-animal_count = 5
+animal_count = 4
+username     = "user1"

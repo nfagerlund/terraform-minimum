@@ -1,14 +1,16 @@
 terraform {
-  provider "null" {
-    source = "hashicorp/null"
+  required_providers {
+    null = {
+      source = "hashicorp/null"
 
-    # version = "3.1.0"
-  }
+      # version = "3.1.0"
+    }
 
-  provider "random" {
-    source = "hashicorp/random"
+    random = {
+      source = "hashicorp/random"
 
-    # version = "3.1.0"
+      # version = "3.1.0"
+    }
   }
 
   # tfe                     = {
