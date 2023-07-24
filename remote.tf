@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.5.0, < 2.0.0"
+  required_version = ">= 1.4.0, < 2.0.0"
   cloud {
     # hostname = "tfcdev-21675e9a.ngrok.io"
     hostname     = "app.staging.terraform.io"
