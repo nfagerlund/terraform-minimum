@@ -5,6 +5,7 @@ variable "username" {
 resource "null_resource" "random" {
   triggers = {
     username = var.username
+    always = uuid()
   }
 }
 
