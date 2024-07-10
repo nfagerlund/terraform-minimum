@@ -14,6 +14,12 @@ data "null_data_source" "dumbran" {
   }
 }
 
+data "null_data_source" "pointless" {
+  inputs = {
+    point = "line"
+  }
+}
+
 output "random_id" {
   value = "Changed to ${null_resource.random.id}"
 }
