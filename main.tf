@@ -8,6 +8,12 @@ resource "null_resource" "random" {
   }
 }
 
+data "null_data_source" "dumbran" {
+  inputs = {
+    random = null_resource.random.id
+  }
+}
+
 output "random_id" {
   value = "Changed to ${null_resource.random.id}"
 }
