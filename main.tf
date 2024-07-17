@@ -48,3 +48,18 @@ output "static_also" {
 output "is_null" {
   value = null
 }
+
+resource "tfcoremock_simple_resource" "example" {
+  id      = "my-simple-resource"
+  bool    = true
+  number  = 0
+  string  = <<-EOT
+    hey there
+      hey.
+        heyyyyyyyyyyyy
+    ok.
+    EOT
+  float   = 0
+  integer = 0
+}
+
