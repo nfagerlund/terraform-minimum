@@ -21,7 +21,7 @@ data "null_data_source" "pointless" {
 }
 
 output "random_id" {
-  value = "Changed to ${null_resource.random.id}"
+  value = "Changed to ${null_resource.random.id}, extra text"
 }
 
 output "username" {
